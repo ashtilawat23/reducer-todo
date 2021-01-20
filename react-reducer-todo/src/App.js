@@ -2,27 +2,21 @@ import logo from './logo.svg';
 import './App.css';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import { useReducer } from 'react';
+import reducer, { initialState } from './reducers/index'
 
 function App() {
-  const tasks = [{ 
-    title: 'Task 1', 
-    id: 0,
-    completed: false,
-  },{ 
-    title: 'Task 2', 
-    id: 1,
-    completed: false,
-  },{ 
-    title: 'Task 3', 
-    id: 2,
-    completed: false,
-  }];
+  const [state, dispatch] = useReducer(reducer, initialState) 
+  const handleClick = () => {
+
+  }
 
   return (
     <div className="App">
       <h1 className='heading'>Ash's Todo App</h1>
-      <TodoList tasks={tasks}/>
+      <TodoList tasks={state.tasks}/>
       <TodoForm />
+      <button onClick={handleClick}>Test Button</button>
     </div>
   );
 }
